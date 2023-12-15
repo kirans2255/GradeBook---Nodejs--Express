@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.E.S COLLEGE</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,200&family=Nova+Square&family=Open+Sans:ital,wght@0,300;1,500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: rgb(255, 255, 255);
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(140, 188, 245, 1) 100%);
+            height: 900px;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkslategray;
+            font-family: 'Nova Square', sans-serif;
+        }
+
+        .heade {
+            color: darkslategray;
+            font-size: 60px;
+            text-align: center;
+            font-family: 'Nova Square', sans-serif;
+            margin-top: 50px;
+            margin-left: -50px;
+        }
+
+        .img {
+            height: 180px;
+            width: 200px;
+            margin-left: 650px;
+            margin-top: -120px;
+        }
+
+        section {
+            margin-left: 300px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px;
+        }
+
+        .form {
+            width: 400px;
+            padding: 40px;
+            background-color: skyblue;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #sem {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            border-style: none;
+        }
+
+        #gde {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            border-style: none;
+        }
+
+        h2 {
+            color: rgb(1, 81, 81);
+            font-size: 25px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            border-style: none;
+        }
+
+        #submit {
+            height: 40px;
+            width: 130px;
+            font-size: 18px;
+            margin-left: 700px;
+            background-color: rgb(83, 216, 76);
+            border-color: white;
+            font-family: 'Open Sans', sans-serif;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            /* Add this line to make the text bold */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="heade">
+            <b> P.E.S COLLEGE </b>
+        </div>
+        <div class="nav">
+            <h1> STUDENT GRADEBOOK </h1>
+        </div>
+    </header>
+
+    <section>
+
+        <form action="/submit" method="post" class="form" id="fi-name">
+
+            <h4 id="lid">
+                <%= user?user.id:"" %>
+            </h4>
+
+            <h2>Register Number</h2>
+            <input type="number" placeholder="Enter Number" id="number" value="<%= user? user.number:"" %>" />
+            <small id="numberError" style="color: red;"></small>
+
+            <h2>Name</h2>
+            <input type="text" placeholder="Enter Name" id="name" value="<%= user? user.name:"" %>" />
+            <small id="nameError" style="color: red;"></small>
+
+            <h2>E-mail</h2>
+            <input type="email" placeholder="Enter Email" id="mail" value="<%= user? user.email:"" %>" />
+            <small id="mailError" style="color: red;"></small>
+
+        </form>
+
+        <form action="/submit" method="post" class="form" id="fi-name">
+
+            <h2>Degree</h2>
+            <input type="text" placeholder="Enter Degree" id="de" value="<%= user? user.degree:"" %>" />
+            <small id="degreeError" style="color: red;"></small>
+
+
+            <h2>Semester</h2>
+            <select id="sem">
+                <option value="Semester 1" <%=user && user.sem==="Semester 1" ? "selected" : "" %>>Semester 1</option>
+                <option value="Semester 2" <%=user && user.sem==="Semester 2" ? "selected" : "" %>>Semester 2</option>
+                <option value="Semester 3" <%=user && user.sem==="Semester 3" ? "selected" : "" %>>Semester 3</option>
+                <option value="Semester 4" <%=user && user.sem==="Semester 4" ? "selected" : "" %>>Semester 4</option>
+                <option value="Semester 5" <%=user && user.sem==="Semester 5" ? "selected" : "" %>>Semester 5</option>
+                <option value="Semester 6" <%=user && user.sem==="Semester 6" ? "selected" : "" %>>Semester 6</option>
+            </select>
+            <small id="semError" style="color: red;"></small>
+
+            <h2>Grade</h2>
+            <select id="gde">
+                <option value="Distinction" <%=user && user.grade==="Distinction" ? "selected" : "" %>>Distinction
+                </option>
+                <option value="First Class" <%=user && user.grade==="First Class" ? "selected" : "" %>>First class
+                </option>
+                <option value="Second Class" <%=user && user.grade==="Second Class" ? "selected" : "" %>>Second Class
+                </option>
+                <option value="Fail" <%=user && user.grade==="Fail" ? "selected" : "" %>>Fail</option>
+            </select>
+            <small id="gradeError" style="color: red;"></small>
+        </form>
+
+    </section>
+
+    <input id="submit" class="submit" type="button" value="<%= user?" MODIFY" :'Submit' %>" />
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const submitButton = document.querySelector("#submit")
+
+            submitButton.addEventListener('click', () => {
+
+                let name = document.querySelector("#name").value
+                let number = document.querySelector("#number").value
+                let email = document.querySelector("#mail").value
+                let degree = document.querySelector("#de").value
+                let sem = document.querySelector("#sem").value
+                let grade = document.querySelector("#gde").value
+                let id = 0;
+
+                let isnameValid = /^[a-zA-Z\s]{3,}$/.test(name);
+                let isnumberValid = /^\d{5,}$/.test(number);
+                let isemailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+                let isdegreeValid = /^[a-zA-Z\s]{10,}$/.test(degree);
+                let issemValid = sem !== "";
+                let isgradeValid = grade !== "";
+
+
+
+                if (!isnameValid || !isnumberValid || !isemailValid || !isdegreeValid || !issemValid || !isgradeValid) {
+                    if (!isnameValid) {
+                        document.querySelector("#nameError").innerHTML = "Minimum 5 Letters Required /Avoid Speacial Characters "
+                    } else {
+                        document.querySelector("#nameError").innerHTML = ""
+                    }
+                    if (!isnumberValid) {
+                        document.querySelector("#numberError").innerHTML = "5 Digits Required"
+                    } else {
+                        document.querySelector("#numberError").innerHTML = ""
+                    }
+                    if (!isemailValid) {
+                        document.querySelector("#mailError").innerHTML = "Invalid Format"
+                    } else {
+                        document.querySelector("#mailError").innerHTML = ""
+                    } if (!isdegreeValid) {
+                        document.querySelector("#degreeError").innerHTML = "Minimum 10 Letters needed"
+                    } else {
+                        document.querySelector("#degreeError").innerHTML = ""
+                    }
+                    if (!issemValid) {
+                        document.querySelector("#semError").innerHTML = "Required"
+                    } else {
+                        document.querySelector("#semError").innerHTML = ""
+                    }
+                    if (!isgradeValid) {
+                        document.querySelector("#gradeError").innerHTML = "Required"
+                    } else {
+                        document.querySelector("#gradeError").innerHTML = ""
+                    }
+
+                } else {
+
+                    if (submitButton.value === 'Submit') {
+
+                        const userData = {
+                            name,
+                            number,
+                            email,
+                            degree,
+                            sem,
+                            grade,
+                            id
+                        }
+
+                        // Sending post request to server  
+
+                        fetch('/submit', {
+                            method: 'POST',
+                            headers: {
+                                // Data is send in json
+                                'Content-Type': 'application/json',
+                            },
+                            // Converted data into string
+                            body: JSON.stringify(userData) // data in json format
+                        })
+
+                            .then(response => {
+                                if (response.status === 200) {
+                                    console.log(response.statusText);
+                                } else {
+                                    // 404 error
+                                    console.error("There is an error occured from the server", response.status, response.statusText)
+                                }
+                            })
+                            .catch(error => console.error("error in geting the from respone"))
+
+                        window.location.href = '/open' //page render to table
+
+                    }
+
+                    else {
+                        let lid = parseInt(document.querySelector("#lid").textContent)
+                        // alert(bookingId)
+
+                        //create new object to send to server to replace or modify  
+                        const updatedUserData = {
+                            name,
+                            number,
+                            email,
+                            degree,
+                            sem,
+                            grade,
+                            id: lid
+                        };
+
+                        //sending put request
+                        fetch(`/editall/ ` + lid, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(updatedUserData)//converted to json format
+                        })
+                            .then(response => { //data modified and server give the response
+                                if (response.status === 200) {
+                                    console.log('User data updated successfully.');
+                                    alert("USER DATA MODIFIED")
+                                    window.location.href = '/open'
+
+                                } else {
+                                    console.log('Error updating user data:', response.status, response.statusText);
+                                }
+                            });
+
+                    }
+
+                }
+
+            })
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
