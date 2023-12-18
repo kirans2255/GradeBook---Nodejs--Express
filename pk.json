@@ -7,5 +7,14 @@
     "sem": "Semester 4",
     "grade": "Fail",
     "id": 1
+  },
+  {
+    "name": "Paula Kaufman",
+    "number": "88645",
+    "email": "pyreweqaku@mailinator.com",
+    "degree": "Obcaecati est quod d",
+    "sem": "Semester 1",
+    "grade": "Distinction",
+    "id": 2
   }
 ]

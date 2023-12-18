@@ -149,6 +149,7 @@
 
             <h2>Semester</h2>
             <select id="sem">
+                <option value="" disabled selected>Choose Semester</option>
                 <option value="Semester 1" <%=user && user.sem==="Semester 1" ? "selected" : "" %>>Semester 1</option>
                 <option value="Semester 2" <%=user && user.sem==="Semester 2" ? "selected" : "" %>>Semester 2</option>
                 <option value="Semester 3" <%=user && user.sem==="Semester 3" ? "selected" : "" %>>Semester 3</option>
@@ -160,6 +161,7 @@
 
             <h2>Grade</h2>
             <select id="gde">
+                <option value="" disabled selected>Choose Grade</option>
                 <option value="Distinction" <%=user && user.grade==="Distinction" ? "selected" : "" %>>Distinction
                 </option>
                 <option value="First Class" <%=user && user.grade==="First Class" ? "selected" : "" %>>First class
@@ -220,12 +222,12 @@
                         document.querySelector("#degreeError").innerHTML = ""
                     }
                     if (!issemValid) {
-                        document.querySelector("#semError").innerHTML = "Required"
+                        document.querySelector("#semError").innerHTML = "Choose a Semester"
                     } else {
                         document.querySelector("#semError").innerHTML = ""
                     }
                     if (!isgradeValid) {
-                        document.querySelector("#gradeError").innerHTML = "Required"
+                        document.querySelector("#gradeError").innerHTML = "Choose a grade"
                     } else {
                         document.querySelector("#gradeError").innerHTML = ""
                     }
